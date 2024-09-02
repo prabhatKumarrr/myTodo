@@ -6,7 +6,7 @@ const app = express();
 
 // route handlers
 
-app.use(express.static("staticFrontend"));
+app.use(express.static("public"));
 
 app.listen(port, () => {
   console.log("The server is running on port  --  " + port);
