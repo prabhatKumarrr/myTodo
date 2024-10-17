@@ -8,7 +8,7 @@ const myTodoList = document.getElementById("myTodo-list");
 
 const myTodo = [];
 
-addTodo.onclick = takeInputFn //Add Todo Onclick response
+addTodo.onclick = takeInputFn; //Add Todo Onclick response
 deleteLastTodo.onclick = deleteLastTodoFn;  // Delete Last Todo
 
 
