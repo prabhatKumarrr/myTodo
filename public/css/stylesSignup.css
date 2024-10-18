@@ -1,0 +1,64 @@
+/* Importing Font-Families -- 'SUSE' & 'Nerko One' */
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=SUSE:wght@100..800&display=swap');
+
+:root {
+    --test: #1752b0;
+    --lightBlue: rgb(69, 156, 255);
+    --darkBlue: rgb(79, 53, 165);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "SUSE", sans-serif;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--lightBlue), var(--test) );
+}
+
+#signup-login {
+    width: 80vw;
+    max-width: 500px;
+    margin: 30vh auto;
+    padding: 40px 30px 25px;
+    background-color: white;
+    border-radius: 18px;
+    color: #0b367a;
+}
+
+.input-div {
+  padding-left: 38px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-box {
+  padding: 6px 12px;
+  min-width: 300px;
+  border-radius: 15px;
+  border: 2px solid var(--lightBlue);
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#btn-container {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  gap: 30px;
+}
+
+button {
+    background: var(--lightBlue);
+    width: 100px;
+    border: 2px solid var(--lightBlue);
+    padding: 5px 8px;
+    color: white;
+    border-radius: 5px;
+}

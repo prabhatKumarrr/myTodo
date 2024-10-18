@@ -1,13 +1,28 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const fs = require("fs");
+const hbs = require("hbs");
 const path = require("path");
-const port = process.env.PORT || 3000;
+const { userRouter } = require("./routes/userRoutes");
+const { entryRouter } = require("./routes/entryRoute");
+const port = process.env.PORT || 6000;
+const publicPath = path.resolve(__dirname, "../public/");
 const app = express();
 
-// route handlers
+app.use(express.json()); //Body-Parser 
 
-app.use(express.static("public"));
+
+// route handlers
+app.use("/myTodo", entryRouter);
+app.use("/myTodo/user", userRouter);
+
+
+
+//Template Engine Config
+app.use("/statics", express.static("public"));
+app.set("view engine", "html");
+app.engine("html", require("hbs").__express);
+app.set("views", "views");
 
 async function main() {
   //Database Connection

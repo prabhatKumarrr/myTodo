@@ -1,0 +1,91 @@
+/* Importing Font-Families -- 'SUSE' & 'Nerko One' */
+
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=SUSE:wght@100..800&display=swap');
+
+:root {
+    --test: #1752b0;
+    --lightBlue: rgb(69, 156, 255);
+    --darkBlue: rgb(79, 53, 165);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "SUSE", sans-serif;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--lightBlue), var(--test) );
+}
+
+#myTodo-container {
+    width: 80vw;
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 18px;
+}
+
+#myTodo-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+h2 {
+  font-family: "Nerko One", cursive;
+  color: #0b367a;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#btn-main {
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+    width: 180px;
+}
+
+button {
+    background: var(--lightBlue);
+    border: 2px solid var(--lightBlue);
+    padding: 5px 8px;
+    color: white;
+    border-radius: 5px;
+}
+
+#take-input {
+  display: none;
+  justify-content: space-around;
+  min-width: 265px;
+}
+
+#input {
+  padding-left: 4px;
+  height: 24px;
+  border: 2.5px solid var(--lightBlue);
+  border-radius: 6px;
+  color: #0b367a;
+}
+
+#divider {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  border: 2px solid var(--lightBlue);
+  border-radius: 5px;
+}
+
+.same-line {
+  display: flex;
+  justify-content: space-between;
+  color: #0b367a;
+}
+
+.indent-line {
+  margin-bottom: 8px;
+}
