@@ -9,6 +9,9 @@ entryRouter.get("/signup", (req, res) => {
   res.render("register");
 });
 
-module.exports = {
-  entryRouter
-}
+entryRouter.get("/main", (req, res) => {
+  res.render("main");
+});
+
+
+module.exports = { entryRouter };

@@ -2,14 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const hbs = require("hbs");
-const path = require("path");
 const { userRouter } = require("./routes/userRoutes");
 const { entryRouter } = require("./routes/entryRoute");
 const port = process.env.PORT || 6000;
-const publicPath = path.resolve(__dirname, "../public/");
 const app = express();
 
-app.use(express.json()); //Body-Parser 
+app.use(express.json()); //Body-Parser
 
 
 // route handlers
