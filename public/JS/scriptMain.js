@@ -1,16 +1,124 @@
-const addTodo = document.getElementById("add-todo");
-const deleteLastTodo = document.getElementById("delete-last-todo");
+// Page Authentication -- Start
+
+const myToken = localStorage.getItem("myTodoToken");
+
+if(!myToken) {
+  location.href = "http://localhost:3000/myTodo";
+}
+else {
+  entrySwitch();
+
+  async function entrySwitch() {
+    const response = await fetch("http://localhost:3000/myTodo/user/main", {
+      method: "POST",
+      body: JSON.stringify({
+        message: "test body"
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        token: myToken,
+      }
+    });
+
+    if(response.status == 403) {
+      alert("Invalid Token!");
+      localStorage.removeItem("myTodoToken");
+      location.href = "http://localhost:3000/myTodo";
+    }
+  }
+}
+
+//Page Authentication -- End
+
+//myProfile Section -- Start
+
+const dropdown = document.getElementById("dropdown-label");
+const dropMenu = document.getElementById("dropdown-menu");
+const hamIcon = document.getElementById("ham-icon");
+
+dropdown.onclick = toggleMenu;
+
+function toggleMenu() {
+  dropMenu.classList.toggle("menu-open");
+  hamIcon.classList.toggle("ham-open");
+}
+
+//logout
+
+const logout = document.getElementById("logout");
+
+logout.onclick = logoutFn;
+
+function logoutFn() {
+  localStorage.removeItem("myTodoToken");
+  location.href = "http://localhost:3000/myTodo";
+}
+
+//Reset all 
+
+const reset = document.getElementById("reset-all");
+
+reset.onclick = resetAll;
+
+function resetAll() {
+  myTodo = [];
+  updateTodo();
+  myRenderFn();
+}
+
+
+//myProfile Section -- End
+
+// Load myTodos -- Start
+
+let myTodo = [];
+
+initialLoad();
+
+async function initialLoad() {
+  const response = await fetch("http://localhost:3000/myTodo/todoOp/allTodos", {
+    headers: {
+      token: myToken,
+    }
+  });
+
+  const data = await response.json();
+  myTodo = data.allTodos;
+
+  myRenderFn();
+}
+
+async function updateTodo() {
+  const response = await fetch("http://localhost:3000/myTodo/todoOp/update", {
+    method: "PUT",
+    body: JSON.stringify({
+      myTodoList: myTodo
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      token: myToken
+    }
+  });
+
+  console.log(await response.json());
+}
+
+
+// Load myTodos -- End
+
+
 const input = document.getElementById("input");
 const btnContainer = document.getElementById("btn-main");
-const takeInput = document.getElementById("take-input");
-const addEdit = document.getElementById("add/edit");
 const myTodoList = document.getElementById("myTodo-list");
 
-const myTodo = [];
+
+//Add Todo Button Section -- Start
+
+const addTodo = document.getElementById("add-todo");
+const takeInput = document.getElementById("take-input");
+const addEdit = document.getElementById("add/edit");
 
 addTodo.onclick = takeInputFn; //Add Todo Onclick response
-deleteLastTodo.onclick = deleteLastTodoFn;  // Delete Last Todo
-
 
 // Input Box
 
@@ -37,6 +145,7 @@ function addTodoFn() {
         "todo": value,
         "markDone": false,
       });
+      updateTodo();
       myRenderFn();
 
       btnContainer.style.display = "flex";
@@ -91,7 +200,6 @@ function myRenderFn() {
   }
 }
 
-
 // Marking Function 
 
 function markingFn(index) {
@@ -101,17 +209,17 @@ function markingFn(index) {
   else {
     myTodo[index].markDone = true;
   }
-
+  
+  updateTodo();
   myRenderFn();
 }
-
 
 // Edit Function 
 
 function editFn(index) {
   btnContainer.style.display = "none";
   takeInput.style.display = "flex";
-  addEdit.innerHTML = "Edit";
+  addEdit.innerHTML = "Edit Todo";
   addEdit.setAttribute("style", "width: 70px;");
 
   addEdit.onclick = () => {
@@ -130,7 +238,8 @@ function editInput(index) {
     if(myTodo[index].markDone == true) {
       myTodo[index].markDone = false;
     }
-
+    
+    updateTodo();
     myRenderFn();
 
     btnContainer.style.display = "flex";
@@ -140,20 +249,16 @@ function editInput(index) {
   }
 }
 
-
 // Delete Current Todo Function 
 
 function deleteThisTodo(index) {
   myTodo.splice(index, 1);
-
+  
+  updateTodo();
   myRenderFn();
 }
 
+//Add Todo button Section -- End
 
-//Delete Last Todo Function 
 
-function deleteLastTodoFn() {
-  myTodo.pop();
 
-  myRenderFn();
-}

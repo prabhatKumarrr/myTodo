@@ -3,6 +3,7 @@ const userRouter = Router();
 const { loginInput, signupInput } = require("../middlewares/inputValidation");
 const { passHash } = require("../middlewares/passHashing");
 const { userModel } = require("../db");
+const { auth } = require("../middlewares/authentication.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT_KEY = process.env.JWT_KEY;
@@ -89,8 +90,10 @@ userRouter.post("/login", loginInput, async (req, res) => {
 
 
 //Main Entry Page
-userRouter.get("/test", (req, res) => {
-  res.render("main");
+userRouter.post("/main", auth, async (req, res) => {
+  res.status(200).json({
+    message: "Token verified Successfully"
+  });
 });
 
 module.exports = {

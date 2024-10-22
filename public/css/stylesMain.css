@@ -1,5 +1,4 @@
 /* Importing Font-Families -- 'SUSE' & 'Nerko One' */
-
 @import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=SUSE:wght@100..800&display=swap');
 
 :root {
@@ -21,7 +20,7 @@ body {
 
 #myTodo-container {
     width: 80vw;
-    max-width: 500px;
+    max-width: 700px;
     margin: 25px auto;
     padding: 20px 30px;
     background-color: white;
@@ -44,12 +43,108 @@ h2 {
     justify-content: center;
 }
 
-#btn-main {
-    display: flex;
-    justify-content: space-around;
-    /* border: 1px solid black; */
-    width: 180px;
+
+/* my Profile Section -- START */
+
+#profile-container {
+  display: flex;
 }
+
+#btn-main {
+    width: 82px;
+}
+
+#add-todo {
+  height: 100%;
+}
+
+#myProfile-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--lightBlue);
+  border: 2px solid var(--lightBlue);
+  min-width: 170px;
+  padding: 5px 8px;
+  color: white;
+  border-radius: 5px;
+}
+
+#dropdown-label {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  cursor: pointer;
+}
+
+#ham-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.7px;
+  margin-right: 20px;
+}
+
+.ham-line {
+  height:2px;
+  border-radius: 50%;
+  background-color: white;
+  width: 19px;
+  transition: all 200ms linear;
+}
+
+.ham-open > div:first-child {
+  transform: rotate(45deg) translate(2px, 5px);
+}
+
+.ham-open > div:nth-child(2) {
+  opacity: 0;
+}
+
+.ham-open > div:nth-child(3) {
+  transform: rotate(-45deg) translate(2px, -5px);
+}
+
+.menu-close {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 91%;
+  display: flex;
+  opacity: 0;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--lightBlue);
+  border: 2px solid var(--lightBlue);
+  padding: 8px 8px;
+  color: white;
+  border-radius: 5px;
+  pointer-events: none;
+  transition: all 200ms linear;
+}
+
+.menu-open {
+  opacity: 1;
+  top: 40px;
+  pointer-events: auto;
+}
+
+.dropdown-links {
+  display: flex;
+  cursor: pointer;
+}
+
+
+.icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 20px;
+}
+
+
+/* my Profile Section -- END */
+
+
 
 button {
     background: var(--lightBlue);
@@ -61,12 +156,15 @@ button {
 
 #take-input {
   display: none;
-  justify-content: space-around;
+  justify-content: center;
   min-width: 265px;
+  margin-bottom: 25px;
 }
 
 #input {
   padding-left: 4px;
+  margin-right: 10px;
+  min-width: 550px;
   height: 24px;
   border: 2.5px solid var(--lightBlue);
   border-radius: 6px;

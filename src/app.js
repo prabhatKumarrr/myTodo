@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const hbs = require("hbs");
 const { userRouter } = require("./routes/userRoutes");
 const { entryRouter } = require("./routes/entryRoute");
+const { todoRouter } = require("./routes/todoRoutes");
 const port = process.env.PORT || 6000;
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json()); //Body-Parser
 // route handlers
 app.use("/myTodo", entryRouter);
 app.use("/myTodo/user", userRouter);
+app.use("/myTodo/todoOp", todoRouter);
 
 
 

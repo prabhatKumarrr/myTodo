@@ -51,7 +51,6 @@ else {
       else {
         alert("Invalid Input!!");
       }
-
     }
   }
 }
