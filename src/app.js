@@ -5,7 +5,7 @@ const hbs = require("hbs");
 const { userRouter } = require("./routes/userRoutes");
 const { entryRouter } = require("./routes/entryRoute");
 const { todoRouter } = require("./routes/todoRoutes");
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json()); //Body-Parser
