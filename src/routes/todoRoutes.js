@@ -43,8 +43,6 @@ todoRouter.get("/allTodos", auth, async (req, res) => {
 todoRouter.put("/update", auth, async (req, res) => {
   const userId = req.body.userId;
   const myTodos = req.body.myTodoList;
-  
-  console.log(myTodos[0]);
 
   const user = await userModel.findOne({
     _id: userId

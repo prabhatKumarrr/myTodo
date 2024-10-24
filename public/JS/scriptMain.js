@@ -25,6 +25,13 @@ else {
       localStorage.removeItem("myTodoToken");
       location.href = "http://localhost:3000/myTodo";
     }
+    else {
+      const data = await response.json();
+
+      const username = document.getElementById("username");
+
+      username.innerHTML = data.username;
+    }
   }
 }
 

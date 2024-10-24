@@ -91,8 +91,13 @@ userRouter.post("/login", loginInput, async (req, res) => {
 
 //Main Entry Page
 userRouter.post("/main", auth, async (req, res) => {
+  const userId = req.body.userId;
+
+  const user = await userModel.findOne({ _id: userId });
+
+
   res.status(200).json({
-    message: "Token verified Successfully"
+    username: user.username
   });
 });
 
