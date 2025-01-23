@@ -1,7 +1,7 @@
 # myTodoApp
 It is a Full Stack Web application built using:
-  - Frontend - Basic HTML/CSS/JS
-  - Backend -  NodeJs/Express/Handlebars
+  - Frontend - HTML/CSS/JS/Handlebars
+  - Backend -  NodeJs/Express
   - DB - mongoDB
   - some other libraries for validation and authentication like JWT, Zod, Bcrypt,etc
 
